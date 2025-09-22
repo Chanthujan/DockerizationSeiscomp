@@ -1,0 +1,2 @@
+# Activated plugins for category sources
+sources = g:mseedfifo
