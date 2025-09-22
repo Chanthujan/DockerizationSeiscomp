@@ -4,8 +4,8 @@ COPY supervisord.conf /etc/supervisord.conf
 COPY etc/global.cfg /home/sysop/seiscomp/etc/global.cfg
 
 
-COPY Files/configNew.xml /home/sysop/seiscomp/etc/configNew.xml
-COPY Files/geoNetInv.xml /home/sysop/seiscomp/etc/inventory/geoNetInv.xml
+COPY Files/Config.xml /home/sysop/seiscomp/etc/defaults/Config.xml
+COPY Files/Inventory.xml /home/sysop/seiscomp/etc/inventory/Inventory.xml
 
 ENTRYPOINT ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
 

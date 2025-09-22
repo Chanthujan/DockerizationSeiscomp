@@ -61,7 +61,25 @@ docker run -d \
 This container acts as the database backend for SeisComP and the message bus (via scmp).
 ### 7. Build & Run Module Containers
 
-Each module has its own folder (docker-<module>/). Below is the command sequence:
+Each SeisComP module is maintained in its own dedicated folder following the pattern docker-<module>/ (e.g., docker-scautopick/, docker-scmaster/, etc.).
+
+Before building these Docker containers, make sure to prepare the following files for your network setup:
+
+Inventory.xml: This contains your station metadata.
+
+Config.xml: This includes station-specific configurations.
+
+Once these files are prepared, add both Inventory.xml and Config.xml to the Files/ directory inside each relevant module folder (e.g., docker-scautopick/Files/).
+
+After adding the files:
+
+Update the Dockerfile in each module folder to copy these files into the appropriate location within the container (e.g., /home/sysop/seiscomp/inventory/ or /home/sysop/seiscomp/etc/).
+
+Build the Docker image for the module to include the changes.
+
+This setup ensures that each module has the correct station and configuration data embedded during the container build process.
+
+Below is the command sequence: 
 
 #### scevent
 ```bash
@@ -102,6 +120,7 @@ docker run -d --name scautopick --network seiscomp-net seiscomp-scautopick:lates
 ```
 
 #### scmaster (with SSH access)
+To build this module, you do not need to pass the inventory or configuration files.
 ```bash
 cd docker-scmaster/
 docker build -t seiscomp-scmaster:latest .
@@ -109,6 +128,7 @@ docker run -d -p 222:22 --name scmaster --network seiscomp-net seiscomp-scmaster
 ```
 
 #### seedlink
+Before building the seedlink container, add the bindings to the folder named key in the docker-seedlink directory
 ```bash
 cd docker-seedlink/
 docker build -t seiscomp-seedlink:latest .

@@ -15,7 +15,7 @@ RUN apt-get update && \
 COPY supervisord.conf /etc/supervisord.conf
 COPY --chown=sysop:sysop etc/global.cfg /home/sysop/seiscomp/etc/global.cfg
 COPY --chmod=0755 entrypoint.sh /entrypoint.sh
-COPY --chown=sysop:sysop inventory/inventoryGeoNet.xml /home/sysop/seiscomp/etc/inventory/inventoryGeoNet.xml
+COPY --chown=sysop:sysop Files/Inventory.xml /home/sysop/seiscomp/etc/inventory/inventory.xml
 COPY --chown=sysop:sysop key /home/sysop/seiscomp/etc/key
 COPY --chown=sysop:sysop msrtsimul /home/sysop/seiscomp/bin/msrtsimul
 

@@ -1,6 +1,0 @@
-# The channel code of the preferred stream used by e.g. scautopick and scrttv.
-# If no component code is given, the vertical component will be fetched from
-# inventory considering the channel orientation (azimuth, dip). If that
-# approach fails, 'Z' will be appended and used as fallback. Do not use regular
-# expressions!
-detecStream = BHZ
