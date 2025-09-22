@@ -191,7 +191,7 @@ passwd sysop
 ssh -X -p 222 sysop@localhost \
 XDG_RUNTIME_DIR=/tmp/runtime-sysop \
 /home/sysop/seiscomp/bin/seiscomp exec scolv \
--d postgresql://sysop:Ailove123@seiscomp-db/seiscomp --offline
+-d postgresql://sysop:sysop@seiscomp-db/seiscomp --offline
 ```
 
 You should now see the SeisComP event visualisation interface.
